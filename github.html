@@ -3,17 +3,22 @@
 </head>
 
 <body>
-
     <main class="box-row">
-
         <section class="box-row box-github">
-
             <h1>GitHub</h1>
-            <input type="text" placeholder="GitHub username">
-            <button class="btn">Go!</button>
-
+            {{> formUsername}}
         </section>
-
     </main>
-
 </body>
+
+<!--
+----------------------------------------------------
+TEMPLATES
+----------------------------------------------------
+-->
+
+<template name="formUsername">
+    <p>Type in a username to fetch GitHub repositories</p>
+    <input type="text" placeholder="GitHub username">
+    <button class="btn">Fetch!</button>
+</template>
