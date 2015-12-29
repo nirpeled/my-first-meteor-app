@@ -6,7 +6,27 @@ SERVER
 
 if (Meteor.isServer) {
 
+    var github = new GitHub({
+        version: '3.0.0'
+    });
+
     Meteor.startup(function () {});
+
+    Meteor.methods({
+
+        'getRepos':function(username) {
+
+            var gists = Async.runSync(function(done) {
+                github.repos.getFromUser({user: username}, function(error, data) {
+                    done(null, data);
+                });
+            });
+
+            return gists.result;
+
+        }
+
+    });
 
 }
 
@@ -30,7 +50,23 @@ if (Meteor.isClient) {
 
         // handle fetch button
         'click button': function(e, template) {
-            console.log('[GitHub] fetching repos for username ' + Session.get('username'));
+
+            var username = Session.get('username');
+
+            console.log('[GitHub] fetching repos for username ' + username);
+
+            // TODO: validate username
+
+            // TODO: use meteor template helpers
+
+            Meteor.call('getRepos', username, function(error, response){
+
+                console.log('[GitHub] fetching repos for username ' + username + ' : done');
+
+                console.log(response);
+
+            });
+
         }
 
     });
