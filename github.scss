@@ -1,0 +1,192 @@
+/*
+----------------------------------------------------
+COLORS
+----------------------------------------------------
+*/
+
+$gray_dark:                     #666666 !default;
+$gray_med:                      #999999 !default;
+$gray_light:                    #dddddd !default;
+$gray_lighter:                  #f7f7f7 !default;
+$orange_light:                  #F06B36 !default;
+$orange_dark:                   #e24e14 !default;
+$blue_light:                    #21c2f8 !default;
+$blue_med:                      #0072a5 !default;
+$blue_dark:                     #3353de !default;
+$green_light:                   #2cc541 !default;
+$white:                         #ffffff !default;
+$text_base:                     #555555 !default;
+$border_base:                   #cccccc !default;
+$color_base:                    #333333 !default;
+
+/*
+----------------------------------------------------
+GRID SYSTEM
+----------------------------------------------------
+*/
+
+$page_max_width:                988px !default;
+$page_header_height:            60px !default;
+$page_footer_height:            40px !default;
+
+$grid_col_12:                   64px !default;
+$grid_col_16:                   43px !default;
+$grid_gutter:                   20px !default;
+$grid_gutter_2x:                40px !default;
+$grid-max-width:                1116px;
+
+/*
+----------------------------------------------------
+GLOBALS
+----------------------------------------------------
+*/
+
+body {
+    position: relative;
+    background: $gray_lighter;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: $text_base;
+
+    a {
+        text-decoration: none;
+    }
+}
+
+/*
+----------------------------------------------------
+BOX SYSTEM
+----------------------------------------------------
+*/
+
+.box-row {
+    width: $page_max_width;
+    margin: 0 auto;
+    position: relative;
+
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+
+    &.box-github {
+        width: 500px;
+        text-align: center;
+    }
+}
+
+/*
+----------------------------------------------------
+MAIN
+----------------------------------------------------
+*/
+
+body > main {
+    width: 100%;
+    min-height: 500px;
+    padding: 70px 0 50px 0;
+
+    h1 {
+        font-size: 40px;
+        line-height: 45px;
+        font-weight: 200;
+        margin: 20px 0;
+        padding: 0;
+    }
+
+    a {
+        color: $text_base;
+
+        &:active, &:focus, &:visited {
+            color: $text_base;
+            text-decoration: none;
+        }
+
+        &:hover {
+            color: $blue_med;
+        }
+    }
+
+    p {
+        color: $text_base;
+        font-size: 14px;
+        line-height: 18px;
+        margin: 10px 0;
+    }
+}
+
+/*
+----------------------------------------------------
+HELPERS
+----------------------------------------------------
+*/
+
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+.cf {
+    zoom: 1;
+}
+
+.lf {
+    float: left;
+}
+
+.rf {
+    float: right;
+}
+
+.hidden {
+    display: none;
+}
+
+/*
+----------------------------------------------------
+BUTTONS
+----------------------------------------------------
+*/
+
+.btn {
+    background: $blue_med;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 400;
+    color: $white;
+    border: 1px solid #fff;
+    padding: 8px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 6px;
+    box-sizing: border-box;
+    text-transform: capitalize;
+}
+
+/*
+----------------------------------------------------
+FORMS
+----------------------------------------------------
+*/
+
+input {
+    width: 200px;
+    font-size: 12px;
+    padding: 4px 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+
+    &[type=checkbox] {
+        width: 60px;
+    }
+}
