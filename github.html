@@ -7,6 +7,7 @@
         <section class="box-row box-github">
             <h1>GitHub</h1>
             {{> formUsername}}
+            {{> repos}}
         </section>
     </main>
 </body>
@@ -21,4 +22,10 @@ TEMPLATES
     <p>Type in a username to fetch GitHub repositories</p>
     <input type="text" placeholder="GitHub username">
     <button class="btn">Go!</button>
+</template>
+
+<template name="repos">
+    {{#each repos}}
+        <p>{{name}}</p>
+    {{/each}}
 </template>

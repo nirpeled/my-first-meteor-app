@@ -40,6 +40,12 @@ if (Meteor.isClient) {
 
     console.log('[GitHub] init');
 
+    Template.repos.helpers({
+        repos: function() {
+            return Session.get('repos')
+        }
+    });
+
     Template.formUsername.events({
 
         // handle username input
@@ -64,6 +70,8 @@ if (Meteor.isClient) {
                 console.log('[GitHub] fetching repos for username ' + username + ' : done');
 
                 console.log(response);
+
+                Session.set('repos', response);
 
             });
 
