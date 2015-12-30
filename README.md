@@ -6,6 +6,10 @@ SETUP:
 
 Run "meteor run"
 
+LIVE DEMO:
+
+Available at http://nirpeled-github.meteor.com
+
 TODO (WIP):
 
 - Find a better github api wrapper
