@@ -245,6 +245,7 @@ GITHUB
 .box-github {
     width: 700px;
     text-align: center;
+    margin-top: 30px;
 
     .form-repos {
         position: relative;
@@ -323,5 +324,11 @@ GITHUB
 
         }
 
+    }
+
+    #login-buttons {
+        position: fixed;
+        top: 20px;
+        right: 20px;
     }
 }
