@@ -98,6 +98,10 @@ if (Meteor.isClient) {
 
         repos: function() {
             return Session.get('repos');
+        },
+
+        moment: function(date) {
+            return moment(date).fromNow();
         }
 
     });

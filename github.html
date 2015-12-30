@@ -33,7 +33,7 @@ TEMPLATES
                 <li>
                     <h2><a href="{{url}}" target="_blank">{{name}}</a> <span class="tag">{{#if language}}{{language}}{{else}}Unknown{{/if}}</span></h2>
                     <p>{{description}}</p>
-                    <p>Last updated at {{updated_at}}</p>
+                    <p class="note">Last updated {{moment updated_at}}</p>
                     <aside>
                         <p><i class="fa fa-code-fork" title="Forks"></i> {{forks_count}}</p>
                         <p><i class="fa fa-star" title="Stars"></i> {{stargazers_count}}</p>

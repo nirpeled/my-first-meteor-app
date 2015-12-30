@@ -21,20 +21,14 @@ COLORS
 ----------------------------------------------------
 */
 
+$black:                         #000000 !default;
+$white:                         #ffffff !default;
 $gray_dark:                     #666666 !default;
 $gray_med:                      #999999 !default;
 $gray_light:                    #dddddd !default;
 $gray_lighter:                  #f7f7f7 !default;
-$orange_light:                  #F06B36 !default;
-$orange_dark:                   #e24e14 !default;
-$blue_light:                    #21c2f8 !default;
 $blue_med:                      #0072a5 !default;
-$blue_dark:                     #3353de !default;
-$green_light:                   #2cc541 !default;
-$white:                         #ffffff !default;
 $text_base:                     #555555 !default;
-$border_base:                   #cccccc !default;
-$color_base:                    #333333 !default;
 
 /*
 ----------------------------------------------------
@@ -43,14 +37,6 @@ GRID SYSTEM
 */
 
 $page_max_width:                988px !default;
-$page_header_height:            60px !default;
-$page_footer_height:            40px !default;
-
-$grid_col_12:                   64px !default;
-$grid_col_16:                   43px !default;
-$grid_gutter:                   20px !default;
-$grid_gutter_2x:                40px !default;
-$grid-max-width:                1116px;
 
 /*
 ----------------------------------------------------
@@ -137,10 +123,14 @@ body > main {
     }
 
     p {
-        color: $text_base;
+        color: $black;
         font-size: 14px;
         line-height: 18px;
         margin: 10px 0;
+
+        &.note {
+            color: $gray_med;
+        }
     }
 }
 
