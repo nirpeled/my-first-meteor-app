@@ -6,8 +6,6 @@ SERVER
 
 if (Meteor.isServer) {
 
-    // TODO: find a better github api wrapper
-
     var github = new GitHub({
         version: '3.0.0'
     });
@@ -15,10 +13,6 @@ if (Meteor.isServer) {
     Meteor.methods({
 
         'getRepos':function(username) {
-
-            // TODO: add support for pagination (repos.getFromUser only returns 30 repos)
-
-            // TODO: fetch more info that can be shown
 
             var repos = Async.runSync(function(done) {
                 github.repos.getFromUser({user: username}, function(error, data) {
@@ -47,8 +41,6 @@ CLIENT
 if (Meteor.isClient) {
 
     // formUsername
-
-    // TODO: grab the current user and auto populate the form input with it
 
     Template.formUsername.helpers({
 
