@@ -32,7 +32,7 @@ TEMPLATES
         <ul class="repos">
             {{#each repos}}
                 <li>
-                    <h2><a href="{{url}}" target="_blank">{{name}}</a> <span class="tag">{{#if language}}{{language}}{{else}}Unknown{{/if}}</span></h2>
+                    <h2><a href="{{html_url}}" target="_blank">{{name}}</a> <span class="tag">{{#if language}}{{language}}{{else}}Unknown{{/if}}</span></h2>
                     <p>{{description}}</p>
                     <p class="note">Last updated {{moment updated_at}}</p>
                     <aside>
