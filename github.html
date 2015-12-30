@@ -5,7 +5,7 @@
 <body>
     <main class="box-row">
         <section class="box-row box-github">
-            <h1>GitHub</h1>
+            <h1>GitHub Repos Finder</h1>
             {{> formUsername}}
             {{> repos}}
         </section>
@@ -19,13 +19,22 @@ TEMPLATES
 -->
 
 <template name="formUsername">
-    <p>Type in a username to fetch GitHub repositories</p>
-    <input type="text" placeholder="GitHub username">
-    <button class="btn"><i class="fa fa-github"></i>Go!</button>
+    <form class="form-repos">
+        <input type="text" placeholder="Type in a GitHub username to fetch repositories">
+        <i class="fa {{#if isLoading}}fa-circle-o-notch fa-spin{{else}}fa-search{{/if}}"></i>
+    </form>
 </template>
 
 <template name="repos">
-    {{#each repos}}
-        <p>{{name}}</p>
-    {{/each}}
+    {{#if repos}}
+        <p>Showing {{repos.length}} repositories</p>
+        <ul>
+            {{#each repos}}
+                <li>
+                    <h2>{{name}}</h2>
+                    <p>{{url}}</p>
+                </li>
+            {{/each}}
+        </ul>
+    {{/if}}
 </template>
