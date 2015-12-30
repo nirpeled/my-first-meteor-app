@@ -27,21 +27,25 @@ TEMPLATES
 </template>
 
 <template name="repos">
-    {{#if repos}}
-        <p>Showing {{repos.length}} repositories</p>
-        <ul class="repos">
-            {{#each repos}}
-                <li>
-                    <h2><a href="{{html_url}}" target="_blank">{{name}}</a> <span class="tag">{{#if language}}{{language}}{{else}}Unknown{{/if}}</span></h2>
-                    <p>{{description}}</p>
-                    <p class="note">Last updated {{moment updated_at}}</p>
-                    <aside>
-                        <p><i class="fa fa-code-fork" title="Forks"></i> {{forks_count}}</p>
-                        <p><i class="fa fa-star" title="Stars"></i> {{stargazers_count}}</p>
-                        <p><i class="fa fa-eye" title="Watchers"></i> {{watchers_count}}</p>
-                    </aside>
-                </li>
-            {{/each}}
-        </ul>
-    {{/if}}
+    {{#with repos}}
+        {{#if result}}
+            <p>Showing <strong>{{result.length}}</strong> repositories</p>
+            <ul class="repos">
+                {{#each result}}
+                    <li>
+                        <h2><a href="{{html_url}}" target="_blank">{{name}}</a> <span class="tag">{{#if language}}{{language}}{{else}}Unknown{{/if}}</span></h2>
+                        <p>{{description}}</p>
+                        <p class="note">Last updated {{moment updated_at}}</p>
+                        <aside>
+                            <p><i class="fa fa-code-fork" title="Forks"></i> {{forks_count}}</p>
+                            <p><i class="fa fa-star" title="Stars"></i> {{stargazers_count}}</p>
+                            <p><i class="fa fa-eye" title="Watchers"></i> {{watchers_count}}</p>
+                        </aside>
+                    </li>
+                {{/each}}
+            </ul>
+        {{else}}
+            <p>No repositories were found for <strong>{{username}}</strong></p>
+        {{/if}}
+    {{/with}}
 </template>
