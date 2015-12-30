@@ -254,10 +254,15 @@ GITHUB
 
         input {
             width: 400px;
-            font-size: 16px;
+            font-size: 15px;
             padding: 10px;
             border-radius: 10px;
             border: 1px solid $gray_light;
+            outline: none;
+
+            &:focus {
+                border-color: $gray_med;
+            }
         }
 
         i {
