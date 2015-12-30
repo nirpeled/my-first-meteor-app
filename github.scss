@@ -1,4 +1,21 @@
 /*
+-----------------------------------------------------
+RESET
+-----------------------------------------------------
+*/
+
+p {
+    margin: 0;
+}
+
+ul, ol, li, nav ul, nav ol {
+    margin:0;
+    padding:0;
+    border: 0;
+    list-style: none;
+}
+
+/*
 ----------------------------------------------------
 COLORS
 ----------------------------------------------------
@@ -93,6 +110,14 @@ body > main {
     h1 {
         font-size: 40px;
         line-height: 45px;
+        font-weight: 200;
+        margin: 20px 0;
+        padding: 0;
+    }
+
+    h2 {
+        font-size: 30px;
+        line-height: 33px;
         font-weight: 200;
         margin: 20px 0;
         padding: 0;
@@ -201,6 +226,28 @@ input {
 
 /*
 ----------------------------------------------------
+TAGS
+----------------------------------------------------
+*/
+
+.tag {
+    background: $gray_lighter;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    line-height: 11px;
+    font-weight: 400;
+    color: $gray_dark;
+    border: 1px solid $gray_light;
+    padding: 3px;
+    margin: 5px 0;
+    border-radius: 3px;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    vertical-align: middle;
+}
+
+/*
+----------------------------------------------------
 GITHUB
 ----------------------------------------------------
 */
@@ -231,5 +278,60 @@ GITHUB
             color: $gray_med;
             cursor: pointer;
         }
+    }
+
+    .repos {
+
+        li {
+            width: 100%;
+            height: 200px;
+            border: 1px solid $gray_light;
+            border-bottom: none;
+            background: $white;
+            text-align: left;
+            padding: 10px 20px;
+            position: relative;
+            box-sizing: border-box;
+
+            &:last-child {
+                border-bottom: 1px solid $gray_light;
+            }
+
+            &:hover {
+                border-left: 10px solid $blue_med;
+                padding-left: 11px;
+
+                .tag {
+                    background: $blue_med;
+                    color: $white;
+                }
+            }
+
+            > p {
+                max-width: 500px;
+            }
+
+            aside {
+                position: absolute;
+                top: 50%;
+                right: 20px;
+                width: 70px;
+                height: 90px;
+                transform: translateY(-50%);
+
+                p {
+                    line-height: 30px;
+                    margin: 0;
+
+                    i {
+                        width: 20px;
+                        text-align: center;
+                        margin-right: 5px;
+                    }
+                }
+            }
+
+        }
+
     }
 }
