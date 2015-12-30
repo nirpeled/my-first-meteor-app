@@ -16,13 +16,17 @@ if (Meteor.isServer) {
 
         'getRepos':function(username) {
 
-            var gists = Async.runSync(function(done) {
+            var repos = Async.runSync(function(done) {
                 github.repos.getFromUser({user: username}, function(error, data) {
                     done(null, data);
                 });
             });
 
-            return gists.result;
+            lodash.forEach(repos.result, function(repo, index) {
+                repos.result[index].score = repo.forks_count + (2 * repo.stargazers_count) + repo.watchers_count;
+            });
+
+            return repos.result;
 
         }
 
@@ -76,7 +80,7 @@ if (Meteor.isClient) {
 
                 console.log('[formUsername] fetching repos for username ' + username + ' : done');
 
-                console.log(response);
+                response = lodash.sortByOrder(response, 'score', 'desc');
 
                 Session.set('isLoading', false);
 
