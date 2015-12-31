@@ -6,25 +6,7 @@ SERVER
 
 if (Meteor.isServer) {
 
-    var github = new GitHub({
-        version: '3.0.0'
-    });
-
-    Meteor.methods({
-
-        'getRepos':function(username) {
-
-            var response = Async.runSync(function(done) {
-                github.repos.getFromUser({user: username}, function(error, data) {
-                    done(null, data);
-                });
-            });
-
-            return response;
-
-        }
-
-    });
+    // not really using server-side
 
 }
 
@@ -36,7 +18,16 @@ CLIENT
 
 if (Meteor.isClient) {
 
+    // init github API wrapper
+
+    // TODO: use logged-in user info to init
+
+    var github = new Github({}),
+        githubUser = github.getUser();
+
+    // ------------
     // formUsername
+    // ------------
 
     Template.formUsername.helpers({
 
@@ -47,10 +38,6 @@ if (Meteor.isClient) {
     });
 
     Template.formUsername.events({
-
-        //'change input': function (e, template) {
-        //    Session.set('username', e.target.value);
-        //},
 
         'click i': function(e, template) {
             template.$('form').submit();
@@ -68,27 +55,36 @@ if (Meteor.isClient) {
 
             Session.set({
                 isLoading: true,
-                username: username
+                username: username,
+                repos: null
             });
 
-            Meteor.call('getRepos', username, function(error, response){
+            githubUser.userRepos(username, function(error, repos) {
 
-                if (lodash.size(response.result)) {
+                if (error) {
+
+                    // TODO: handle different types of errors
+
+                    Session.set({
+                        isLoading: false
+                    });
+
+                } else {
 
                     // calculate a repository score
-                    lodash.forEach(response.result, function(repo, index) {
-                        response.result[index].score = repo.forks_count + (2 * repo.stargazers_count) + repo.watchers_count;
+                    lodash.forEach(repos, function(repo, index) {
+                        repo.score = repo.forks_count + (2 * repo.stargazers_count) + repo.watchers_count;
                     });
 
                     // sort repositories by score (descending)
-                    response.result = lodash.sortByOrder(response.result, 'score', 'desc');
+                    repos = lodash.sortByOrder(repos, 'score', 'desc');
+
+                    Session.set({
+                        isLoading: false,
+                        repos: repos
+                    });
 
                 }
-
-                Session.set({
-                    isLoading: false,
-                    repos: response
-                });
 
             });
 
@@ -96,9 +92,15 @@ if (Meteor.isClient) {
 
     });
 
+    // -----
     // repos
+    // -----
 
     Template.repos.helpers({
+
+        isLoading: function() {
+            return Session.get('isLoading');
+        },
 
         repos: function() {
             return Session.get('repos');
@@ -108,7 +110,7 @@ if (Meteor.isClient) {
             return Session.get('username');
         },
 
-        moment: function(date) {
+        fromNow: function(date) {
             return moment(date).fromNow();
         }
 

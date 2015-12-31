@@ -12,8 +12,6 @@ Available at http://nirpeled-github.meteor.com (GitHub API calls seems to be fai
 
 TODO (WIP):
 
-- Find a better GitHub API wrapper (preferably one that runs on the client) 
-- Add support for pagination or increase page limit (repos.getFromUser only returns 30 repos with no pagination support)
 - Grab the current GitHub user and auto populate the form input with it (using Meteor.user().services.github.username)
 - Fetch more info that can be shown (parent repo, commiters, open issues, open prs, etc.)
 - Add filtering options for repos (free text, public, private, sources, forks, mirrors, etc.)

@@ -18,7 +18,6 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 autopublish             # Publish all data to the clients (for prototyping)
 insecure                # Allow all DB writes from clients (for prototyping)
-bruz:github-api
 fourseven:scss
 meteorhacks:npm
 fortawesome:fontawesome
@@ -26,3 +25,4 @@ erasaur:meteor-lodash
 momentjs:moment
 accounts-github
 accounts-ui
+nirpeled:meteor-github
