@@ -21,7 +21,7 @@ TEMPLATES
 
 <template name="formUsername">
     <form class="form-repos">
-        <input type="text" placeholder="Type in a GitHub username to fetch repositories">
+        <input type="text" placeholder="Type in a GitHub username to fetch repositories" value={{username}}>
         <i class="fa {{#if isLoading}}fa-circle-o-notch fa-spin{{else}}fa-search{{/if}}"></i>
     </form>
 </template>

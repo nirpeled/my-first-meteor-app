@@ -12,7 +12,7 @@ Available at http://nirpeled-github.meteor.com (GitHub API calls seems to be fai
 
 TODO (WIP):
 
-- Grab the current GitHub user and auto populate the form input with it (using Meteor.user().services.github.username)
+- Init the GitHub API Wrapper using logged-in user info
 - Fetch more info that can be shown (parent repo, commiters, open issues, open prs, etc.)
 - Add filtering options for repos (free text, public, private, sources, forks, mirrors, etc.)
 - Add unit-tests

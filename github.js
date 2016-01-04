@@ -33,6 +33,10 @@ if (Meteor.isClient) {
 
         isLoading: function() {
           return Session.get('isLoading');
+        },
+
+        username: function() {
+            return lodash.get(Meteor.user(), 'services.github.username', null);
         }
 
     });
